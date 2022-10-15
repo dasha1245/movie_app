@@ -1,0 +1,34 @@
+.Header{
+    height: 100px;
+    background: rgb(194, 187, 240);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.darkMode{
+    height: 30px;
+    width: 30px;
+    border: 1px solid black;
+    border-radius: 50%;
+    color: black;
+    background: rgba(227, 224, 224, 0.68);
+}
+
+.input{
+    height: 20px;
+    width: 700px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    background: rgba(227, 224, 224, 0.68);
+    color: black;
+}
+
+.genre_btn{
+    height: 25px;
+    margin: 10px;
+    border: 1px solid black;
+    background: rgba(227, 224, 224, 0.68);
+    color: black;
+    border-radius: 5px;
+}

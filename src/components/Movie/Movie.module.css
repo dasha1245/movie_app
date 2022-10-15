@@ -1,0 +1,22 @@
+.movies{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+.eachMovie{
+    width: 200px;
+    height: 450px;
+    margin: 15px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.movieInfo{
+    display: flex;
+    flex-direction: column;
+}
