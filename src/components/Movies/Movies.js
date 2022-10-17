@@ -1,24 +1,26 @@
-import {useDispatch, useSelector} from "react-redux";
-import {useEffect} from "react";
+import {useSelector} from "react-redux";
+import {useState} from "react";
 
-import {movieActions} from "../../redux";
 import {Movie} from "../Movie/Movie";
 import css from '../Movie/Movie.module.css'
 
-const Movies = () => {
 
-    const dispatch = useDispatch();
+const Movies = () => {
     const {movies} = useSelector(state => state.movieReducer);
 
-    useEffect(()=>{
-        dispatch(movieActions.getAll())
-    }, [dispatch]);
-    
-    return (
-        <div className={css.movies}>
+    const [value, setValue] = useState('');
+    const filteredFilms = movies.filter((movie) => {
+        return movie.title.toLowerCase().includes(value.toLowerCase())
+    })
 
-            {movies.map((movie) => <Movie movie={movie} key={movie.id}/>)}
+    return (
+        <div>
+        <input type="text" className={css.input} placeholder={'Search...'} onChange={(event) => setValue(event.target.value)}/>
+        <div className={css.movies}>
+            {filteredFilms.map((movie) => <Movie movie={movie} key={movie.id}/>)}
         </div>
+        </div>
+
     );
 };
 

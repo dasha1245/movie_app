@@ -1,0 +1,17 @@
+.btn {
+    height: 25px;
+    margin: 10px;
+    border: 1px solid black;
+    background: rgba(51, 153, 137, 0.68);
+    color: black;
+    border-radius: 5px;
+}
+
+.btn_disabled{
+    height: 25px;
+    margin: 10px;
+    border: 1px solid black;
+    background: rgba(51, 153, 137, 0.35);
+    color: black;
+    border-radius: 5px;
+}

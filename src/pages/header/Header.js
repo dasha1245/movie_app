@@ -1,13 +1,17 @@
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {solid} from '@fortawesome/fontawesome-svg-core/import.macro'
+import {useDispatch} from "react-redux";
 
 import css from './Header.module.css'
+import {movieActions} from "../../redux";
 
 const Header = () => {
+
+    const dispatch = useDispatch();
+
     return (
         <div className={css.Header}>
-            <button className={css.darkMode}><FontAwesomeIcon icon={solid('moon')} size={'lg'}/></button>
-            <input type="text" className={css.input} placeholder={'Search...'}/>
+            <button onClick={()=>dispatch(movieActions.themeSwitcher())} className={css.darkMode}><FontAwesomeIcon icon={solid('moon')} size={'lg'}/></button>
             <button className={css.genre_btn}>Genres</button>
         </div>
     );

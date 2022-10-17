@@ -20,3 +20,13 @@
     display: flex;
     flex-direction: column;
 }
+
+.input{
+    height: 20px;
+    width: 700px;
+    margin-left: 15px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    background: rgba(227, 224, 224, 0.68);
+    color: black;
+}

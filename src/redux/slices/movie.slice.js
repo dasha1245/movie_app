@@ -3,15 +3,16 @@ import {createSlice, createAsyncThunk} from "@reduxjs/toolkit";
 import {MoviesService} from "../../services";
 
 const initialState = {
-    movies: []
+    movies: [],
+    theme: 'light',
 };
 
 const getAll = createAsyncThunk(
   'movieSlice/getAll',
-    async (_, {rejectWithValue}) => {
+    async (page, {rejectWithValue}) => {
       try {
-          const {data} = await MoviesService.getAll();
-          return data.results;
+          const {data} = await MoviesService.getAll(page);
+          return data;
       } catch (e) {
             rejectWithValue(e.response.data)
       }
@@ -23,20 +24,29 @@ const getAll = createAsyncThunk(
 const movieSlice = createSlice({
     name: 'movieSlice',
     initialState,
-    reducers: {},
+    reducers: {
+        themeSwitcher: (state, action) => {
+            if (state.theme === "light"){
+                state.theme = 'dark'
+            } else {
+                state.theme = 'light'
+            }
+        }
+    },
     extraReducers: builder =>
         builder
             .addCase(getAll.fulfilled, (state, action) => {
-                state.movies = action.payload
+                state.movies = action.payload.results
             })
 
 
 });
 
-const {reducer: movieReducer} = movieSlice;
+const {reducer: movieReducer, actions:{themeSwitcher, }} = movieSlice;
 
 const movieActions = {
-    getAll
+    getAll,
+    themeSwitcher
 }
 
 export {
