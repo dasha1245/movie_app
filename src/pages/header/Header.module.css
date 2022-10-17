@@ -7,11 +7,10 @@
 }
 
 .darkMode{
-    height: 30px;
-    width: 30px;
+    height: 25px;
     margin-left: 15px;
     border: 1px solid black;
-    border-radius: 50%;
+    border-radius: 5px;
     color: black;
     background: rgba(51, 153, 137, 0.68);
 }

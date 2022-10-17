@@ -1,5 +1,4 @@
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {solid} from '@fortawesome/fontawesome-svg-core/import.macro'
+
 import {useDispatch} from "react-redux";
 
 import css from './Header.module.css'
@@ -11,7 +10,7 @@ const Header = () => {
 
     return (
         <div className={css.Header}>
-            <button onClick={()=>dispatch(movieActions.themeSwitcher())} className={css.darkMode}><FontAwesomeIcon icon={solid('moon')} size={'lg'}/></button>
+            <button onClick={()=>dispatch(movieActions.themeSwitcher())} className={css.darkMode}> Change Theme</button>
             <button className={css.genre_btn}>Genres</button>
         </div>
     );
