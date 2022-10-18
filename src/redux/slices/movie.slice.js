@@ -32,6 +32,18 @@ const getAllGenres = createAsyncThunk(
     }
 );
 
+const getSearchedFilms = createAsyncThunk(
+    'movieSlice/getSearchedFilms',
+    async (query, {rejectWithValue}) => {
+        try {
+            const {data} = await MoviesService.searchMovies(query);
+            return data.results
+        } catch (e) {
+            rejectWithValue(e.response.data)
+        }
+    }
+);
+
 const movieSlice = createSlice({
     name: 'movieSlice',
     initialState,
@@ -52,6 +64,10 @@ const movieSlice = createSlice({
             .addCase(getAllGenres.fulfilled, (state, action) => {
                 state.genres = action.payload
             })
+            .addCase(getSearchedFilms.fulfilled, (state, action) => {
+                state.movies = action.payload
+                // console.log(action.payload);
+            })
 
 
 });
@@ -62,6 +78,7 @@ const movieActions = {
     getAll,
     themeSwitcher,
     getAllGenres,
+    getSearchedFilms
 }
 
 export {
