@@ -1,11 +1,13 @@
 import {ThemeProvider} from "styled-components";
 import {useSelector} from "react-redux";
-import {Routes} from "react-router-dom"
+import {Routes, Route} from "react-router-dom"
 
 import './App.css';
 import {MainLayout} from "./layouts";
 import {GlobalStyles} from './darkMode/globalStyle'
 import {lightTheme, darkTheme} from './darkMode/Theme'
+import {Genres} from "./components";
+import {MovieDetails} from "./components/MovieDetails/MovieDetails";
 
 
 function App() {
@@ -16,7 +18,13 @@ function App() {
           <>
           <GlobalStyles/>
       <div>
-            <MainLayout/>
+          <Routes>
+              <Route path={'/'} element={<MainLayout/>}>
+                <Route path={'genres'} element={<Genres/>}/>
+              </Route>
+              <Route path={'movieDetails'} element={<MovieDetails/>}/>
+          </Routes>
+
       </div>
           </>
       </ThemeProvider>

@@ -5,6 +5,7 @@ import {MoviesService} from "../../services";
 const initialState = {
     movies: [],
     theme: 'light',
+    genres: []
 };
 
 const getAll = createAsyncThunk(
@@ -19,7 +20,17 @@ const getAll = createAsyncThunk(
     }
 );
 
-
+const getAllGenres = createAsyncThunk(
+    'movieSlice/getAllGenres',
+    async (_, {rejectWithValue}) => {
+        try {
+            const {data} = await MoviesService.getAllGenres();
+            return data.genres
+        } catch (e) {
+            rejectWithValue(e.response.data)
+        }
+    }
+);
 
 const movieSlice = createSlice({
     name: 'movieSlice',
@@ -38,15 +49,19 @@ const movieSlice = createSlice({
             .addCase(getAll.fulfilled, (state, action) => {
                 state.movies = action.payload.results
             })
+            .addCase(getAllGenres.fulfilled, (state, action) => {
+                state.genres = action.payload
+            })
 
 
 });
 
-const {reducer: movieReducer, actions:{themeSwitcher, }} = movieSlice;
+const {reducer: movieReducer, actions:{themeSwitcher}} = movieSlice;
 
 const movieActions = {
     getAll,
-    themeSwitcher
+    themeSwitcher,
+    getAllGenres,
 }
 
 export {

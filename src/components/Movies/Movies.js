@@ -15,10 +15,15 @@ const Movies = () => {
 
     return (
         <div>
-        <input type="text" className={css.input} placeholder={'Search...'} onChange={(event) => setValue(event.target.value)}/>
+        <input type="text"
+               className={css.input}
+               placeholder={'Search...'}
+               onChange={(event) => setValue(event.target.value)}/>
+
         <div className={css.movies}>
             {filteredFilms.map((movie) => <Movie movie={movie} key={movie.id}/>)}
         </div>
+
         </div>
 
     );

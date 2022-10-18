@@ -1,8 +1,9 @@
-
 import {useDispatch} from "react-redux";
+import {Link} from "react-router-dom";
 
 import css from './Header.module.css'
 import {movieActions} from "../../redux";
+
 
 const Header = () => {
 
@@ -10,8 +11,15 @@ const Header = () => {
 
     return (
         <div className={css.Header}>
-            <button onClick={()=>dispatch(movieActions.themeSwitcher())} className={css.darkMode}> Change Theme</button>
-            <button className={css.genre_btn}>Genres</button>
+            <button onClick={()=>dispatch(movieActions.themeSwitcher())}
+                    className={css.darkMode}> Change Theme</button>
+
+           <Link to={'genres'}>
+            <button className={css.genre_btn}
+            onClick={() => dispatch(movieActions.getAllGenres())}
+            >Genres</button>
+
+           </Link>
         </div>
     );
 };
