@@ -1,0 +1,31 @@
+.main{
+    display: flex;
+    flex-direction: row;
+}
+
+.line{
+    background: rgba(51, 153, 137, 0.6);
+    width: 100px;
+    height: 3px;
+ }
+
+.desc{
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.overview{
+    font-family: "Bookman Old Style";
+    margin-left: 15px;
+}
+
+.title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: "Segoe UI Historic"
+}

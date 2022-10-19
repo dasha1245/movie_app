@@ -1,22 +1,21 @@
 import {useDispatch, useSelector} from "react-redux";
-import {useState} from "react";
+import {useEffect} from "react";
+import {Link} from "react-router-dom";
 
 import {Movie} from "../Movie/Movie";
 import css from '../Movie/Movie.module.css'
-import {useParams, useSearchParams} from "react-router-dom";
+import cssGenre from '../Genres/Genres.module.css'
 import {movieActions} from "../../redux";
-
 
 const Movies = () => {
     const {movies} = useSelector(state => state.movieReducer);
 
     const dispatch = useDispatch();
 
-    // const [value, setValue] = useState('');
-    const [query, setQuery] = useSearchParams({query: ''})
-    // const filteredFilms = movies.filter((movie) => {
-    //     return movie.title.toLowerCase().includes(value.toLowerCase())
-    // })
+    useEffect(()=>{
+        dispatch(movieActions.getAllGenres())
+    }, [dispatch])
+
 
     return (
         <div>
@@ -28,6 +27,13 @@ const Movies = () => {
                    event.target.value?dispatch(movieActions.getSearchedFilms(event.target.value))
                        :dispatch(movieActions.getAll())
                }}/>
+
+            <Link to={'genres'}>
+                <button className={cssGenre.btn}
+                        onClick={() => dispatch(movieActions.getAllGenres())}
+                >Genres</button>
+
+            </Link>
 
         <div className={css.movies}>
             {movies.map((movie) => <Movie movie={movie} key={movie.id}/>)}

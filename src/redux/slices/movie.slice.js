@@ -4,6 +4,7 @@ import {MoviesService} from "../../services";
 
 const initialState = {
     movies: [],
+    movie: null,
     theme: 'light',
     genres: []
 };
@@ -44,6 +45,18 @@ const getSearchedFilms = createAsyncThunk(
     }
 );
 
+const getMovieById = createAsyncThunk(
+    'movieSlice/getMovieById',
+    async (id, {rejectWithValue}) => {
+        try {
+            const {data} = await MoviesService.getMovieById(id);
+            console.log(data);
+        } catch (e) {
+
+        }
+    }
+)
+
 const movieSlice = createSlice({
     name: 'movieSlice',
     initialState,
@@ -66,7 +79,9 @@ const movieSlice = createSlice({
             })
             .addCase(getSearchedFilms.fulfilled, (state, action) => {
                 state.movies = action.payload
-                // console.log(action.payload);
+            })
+            .addCase(getMovieById.fulfilled, (state, action) => {
+                state.movie = action.payload
             })
 
 
@@ -78,7 +93,8 @@ const movieActions = {
     getAll,
     themeSwitcher,
     getAllGenres,
-    getSearchedFilms
+    getSearchedFilms,
+    getMovieById
 }
 
 export {

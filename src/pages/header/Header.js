@@ -14,12 +14,7 @@ const Header = () => {
             <button onClick={()=>dispatch(movieActions.themeSwitcher())}
                     className={css.darkMode}> Change Theme</button>
 
-           <Link to={'genres'}>
-            <button className={css.genre_btn}
-            onClick={() => dispatch(movieActions.getAllGenres())}
-            >Genres</button>
 
-           </Link>
         </div>
     );
 };

@@ -6,8 +6,8 @@
 
 }
 .eachMovie{
-    width: 200px;
-    height: 450px;
+    width: 250px;
+    height: 500px;
     margin: 15px;
     display: flex;
     flex-direction: column;
@@ -21,6 +21,10 @@
     flex-direction: column;
 }
 
+.text{
+    margin: 10px;
+}
+
 .input{
     height: 20px;
     width: 700px;
@@ -29,4 +33,24 @@
     border: 1px solid gray;
     background: rgba(227, 224, 224, 0.68);
     color: black;
+}
+
+.links{
+    outline: none;
+    text-decoration: none;
+    color: #27b6b6;
+}
+
+.badget{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+}
+.eachBadget{
+    width: 100px;
+    margin: 2px;
+    background: rgba(61, 65, 75, 0.33);
+    border: 1px solid rgba(0, 0, 0, 0.67);
+    border-radius: 5px;
+    color: white;
 }
