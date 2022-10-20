@@ -1,13 +1,17 @@
-import {Outlet} from "react-router-dom"
-
 import {Header, MoviesPage} from "../pages";
 import {Genres} from "../components";
+import {useSelector} from "react-redux";
 
 const MainLayout = () => {
+
+    const {showGenre} = useSelector(state => state.movieReducer);
+
     return (
         <div>
             <Header/>
-            <Outlet/>
+            {
+                showGenre ? <Genres/>:null
+            }
             <MoviesPage/>
         </div>
     );

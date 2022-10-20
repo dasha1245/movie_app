@@ -1,27 +1,35 @@
-import {useSelector} from "react-redux";
-import {useNavigate} from "react-router-dom"
+import {useDispatch, useSelector} from "react-redux";
+import {useEffect} from "react";
 
 import {Genre} from "../Genre/Genre";
 import css from './Genres.module.css'
+import {movieActions} from "../../redux";
+
 
 const Genres = () => {
 
     const {genres} = useSelector(state => state.movieReducer);
-    const navigate = useNavigate();
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(movieActions.getAllGenres())
+    }, [dispatch])
 
     return (
         <div className={css.Genres}>
-            {genres.map(genre => <Genre genre={genre} key={genre.id}/>)}
+            {genres?.map(genre => <Genre
+                genre={genre}
+                key={genre.id}
+            />)}
 
             <div className={css.btns}>
                 <button
-                    onClick={() => navigate(-1)}
+                    onClick={() => dispatch(movieActions.showGenres(false))}
                     className={css.btn}
                 >Close Genres
                 </button>
-                <button
-                    className={css.btn}
-                >Apply</button>
+
+
 
             </div>
         </div>

@@ -1,14 +1,21 @@
 import {Rating} from "@mui/material";
 import {Link} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import {useEffect} from "react";
 
 import css from './Movie.module.css'
-import {useSelector} from "react-redux";
+import {movieActions} from "../../redux";
 
 const Movie = ({movie}) => {
 
 
     const {genres} = useSelector(state => state.movieReducer);
 
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(movieActions.getAllGenres())
+    }, [dispatch])
     const findGenre = (id) => {
         const genre = genres.find(item => item.id === id)
         return genre?.name
