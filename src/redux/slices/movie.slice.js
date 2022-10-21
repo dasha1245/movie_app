@@ -7,6 +7,7 @@ const initialState = {
     movie: null,
     theme: 'light',
     genres: [],
+    // genre: null,
     selectedGenre: [],
     currentPage:1,
     totalPages: 0,
@@ -146,7 +147,7 @@ const movieActions = {
     setGenre,
     getWithGenres,
     discardGenres,
-    showGenres
+    showGenres,
 }
 
 export {

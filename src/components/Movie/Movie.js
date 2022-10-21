@@ -16,6 +16,7 @@ const Movie = ({movie}) => {
     useEffect(() => {
         dispatch(movieActions.getAllGenres())
     }, [dispatch])
+
     const findGenre = (id) => {
         const genre = genres.find(item => item.id === id)
         return genre?.name
@@ -42,7 +43,7 @@ const Movie = ({movie}) => {
                         precision={0.5} readOnly />
                 </div>
                 <div className={css.badget}>
-                    {movie.genre_ids.map((value) => <div key={value} className={css.eachBadget}>{findGenre(value)}</div>)}
+                    {movie.genre_ids?.map((value) => <div key={value} className={css.eachBadget}>{findGenre(value)}</div>)}
                 </div>
             </div>
 

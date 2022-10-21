@@ -1,13 +1,26 @@
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {useLocation} from "react-router-dom";
+import {useEffect} from "react";
 
 import css from './MovieDetails.module.css'
+import {movieActions} from "../../redux";
 
 const MovieDetails = () => {
 
     const location = useLocation();
     const {state: movie} = location
+
+    const {genres} = useSelector(state => state.movieReducer);
     const dispatch = useDispatch();
+
+    useEffect(()=> {
+        dispatch(movieActions.getAllGenres())
+    }, [])
+
+    const findGenre = (id) => {
+        const genre = genres.find(item => item.id === id)
+        return genre?.name
+    }
 
     return (
         <div>
@@ -24,6 +37,7 @@ const MovieDetails = () => {
                     </div>
 
                     <p className={css.overview}>{movie.overview}</p>
+                    <h5>Genres: {movie.genre_ids?.map((value) => <div key={value} >{findGenre(value)}</div>)}</h5>
                 </div>
             </div>
         </div>
