@@ -1,12 +1,12 @@
+import {useDispatch} from "react-redux";
+import {useRef} from "react";
+
 import css from '../Genres/Genres.module.css'
-import {useSelector, useDispatch} from "react-redux";
 import {movieActions} from "../../redux";
-import {useRef, useState} from "react";
 
 const Genre = ({genre}) => {
 
     const ref = useRef(null);
-    const {selectedGenre} = useSelector(state => state.movieReducer);
     const dispatch = useDispatch();
 
     const setGenre = (id) =>{

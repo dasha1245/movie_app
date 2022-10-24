@@ -36,8 +36,12 @@ const MovieDetails = () => {
                     <div className={css.line}></div>
                     </div>
 
-                    <p className={css.overview}>{movie.overview}</p>
+                    <div className={css.details}>
+                    <p>{movie.overview}</p>
                     <h5>Genres: {movie.genre_ids?.map((value) => <div key={value} >{findGenre(value)}</div>)}</h5>
+                    <p>Released: {movie.release_date}</p>
+                    <p>IMDB {movie.vote_average}</p>
+                    </div>
                 </div>
             </div>
         </div>

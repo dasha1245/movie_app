@@ -1,6 +1,7 @@
+import {useSelector} from "react-redux";
+
 import {Header, MoviesPage} from "../pages";
 import {Genres} from "../components";
-import {useSelector} from "react-redux";
 
 const MainLayout = () => {
 

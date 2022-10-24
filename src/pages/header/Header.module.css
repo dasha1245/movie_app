@@ -1,6 +1,6 @@
 .Header{
     height: 50px;
-    background: rgb(194, 187, 240);
+    background: rgba(239, 50, 50, 0.75);
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -11,16 +11,6 @@
     margin-left: 15px;
     border: 1px solid black;
     border-radius: 5px;
-    color: black;
-    background: rgba(51, 153, 137, 0.68);
-}
-
-
-.genre_btn{
-    height: 25px;
-    margin: 10px;
-    border: 1px solid black;
-    background: rgba(51, 153, 137, 0.68);
-    color: black;
-    border-radius: 5px;
+    color: white;
+    background: rgba(19, 2, 2, 0.51);
 }

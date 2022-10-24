@@ -7,12 +7,11 @@ const initialState = {
     movie: null,
     theme: 'light',
     genres: [],
-    // genre: null,
     selectedGenre: [],
     currentPage:1,
     totalPages: 0,
     searchParams: '',
-    showGenre: false
+    showGenre: false,
 };
 
 const getAll = createAsyncThunk(
@@ -103,26 +102,27 @@ const movieSlice = createSlice({
         showGenres: (state, action) => {
             state.showGenre = action.payload
         }
+
     },
     extraReducers: builder =>
         builder
             .addCase(getAll.fulfilled, (state, action) => {
-                state.totalPages = action.payload.total_pages
-                state.movies = action.payload.results
+                state.totalPages = action.payload.total_pages;
+                state.movies = action.payload.results;
             })
             .addCase(getAllGenres.fulfilled, (state, action) => {
-                state.genres = action.payload
+                state.genres = action.payload;
             })
             .addCase(getSearchedFilms.fulfilled, (state, action) => {
-                state.totalPages = action.payload.total_pages
-                state.movies = action.payload.results
+                state.totalPages = action.payload.total_pages;
+                state.movies = action.payload.results;
             })
             .addCase(getMovieById.fulfilled, (state, action) => {
-                state.movie = action.payload
+                state.movie = action.payload;
             })
             .addCase(getWithGenres.fulfilled, (state, action) => {
-                state.movies = action.payload.results
-                state.totalPages = action.payload.total_pages
+                state.movies = action.payload.results;
+                state.totalPages = action.payload.total_pages;
             })
 
 
@@ -147,7 +147,7 @@ const movieActions = {
     setGenre,
     getWithGenres,
     discardGenres,
-    showGenres,
+    showGenres
 }
 
 export {

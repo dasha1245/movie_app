@@ -1,6 +1,6 @@
 .Genres{
     height: 150px;
-    background: rgba(115, 110, 238, 0.6);
+    background: rgba(239, 50, 50, 0.56);
     border: 1px solid rgba(0, 0, 0, 0.15);
     display: flex;
     flex-wrap: wrap;
@@ -12,8 +12,8 @@
 
 .btn{
     border: 1px solid black;
-    background: rgba(51, 153, 137, 0.68);
-    color: black;
+    background: rgba(193, 9, 9, 0.75);
+    color: white;
     border-radius: 5px;
     margin-left: 15px;
 }

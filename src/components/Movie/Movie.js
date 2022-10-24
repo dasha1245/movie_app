@@ -14,7 +14,7 @@ const Movie = ({movie}) => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(movieActions.getAllGenres())
+            dispatch(movieActions.getAllGenres())
     }, [dispatch])
 
     const findGenre = (id) => {
@@ -32,7 +32,7 @@ const Movie = ({movie}) => {
                 <div className={css.movieInfo}>
 
                 <div>
-                    <p className={css.text}>{movie.title}</p>
+                    <p className={css.text}> <b>{movie.title}</b> </p>
                     <p className={css.text}>Release: {movie.release_date}</p>
                 </div>
 
@@ -40,7 +40,8 @@ const Movie = ({movie}) => {
                         defaultValue={movie.vote_average}
                         max={10}
                         size={'small'}
-                        precision={0.5} readOnly />
+                        precision={0.5} readOnly
+                />
                 </div>
                 <div className={css.badget}>
                     {movie.genre_ids?.map((value) => <div key={value} className={css.eachBadget}>{findGenre(value)}</div>)}

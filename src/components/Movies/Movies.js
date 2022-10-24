@@ -1,11 +1,11 @@
 import {useDispatch, useSelector} from "react-redux";
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 
+import Pagination from '@mui/material/Pagination'
 import {Movie} from "../Movie/Movie";
 import css from '../Movie/Movie.module.css'
 import cssGenre from '../Genres/Genres.module.css'
 import {movieActions} from "../../redux";
-import Pagination from '@mui/material/Pagination'
 
 const Movies = () => {
     const {movies, currentPage, totalPages, searchParams, selectedGenre, showGenre} = useSelector(state => state.movieReducer);
@@ -14,7 +14,7 @@ const Movies = () => {
 
 
     useEffect(()=>{
-        if ((searchParams === '' || !searchParams) && !selectedGenre ) {
+        if ((searchParams === '' || !searchParams) && !selectedGenre) {
             dispatch(movieActions.getAll({currentPage}))
         } if (selectedGenre && (searchParams === '' || !searchParams)) {
             dispatch(movieActions.getWithGenres({currentPage, selectedGenre}))
@@ -28,6 +28,7 @@ const Movies = () => {
     const changePage = (page) => {
         dispatch(movieActions.setCurrentPage(page))
     }
+
 
     return (
         <div>
